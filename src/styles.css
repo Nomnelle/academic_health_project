@@ -1,0 +1,433 @@
+@import "tailwindcss";
+
+:root{
+  --lavender-web: #E5E3F1ff;
+  --pink-lavender: rgba(232, 190, 239, 0.37);
+  --magnolia: #F0E9EEff;
+  --non-photo-blue: #B7E7F2ff;
+  --periwinkle: #B6B5EEff;
+  --periwinkle-dark: #656583;
+  --color-white: #FFFFFF7F ;
+}
+
+@font-face {
+  font-family: 'Now';
+  src: url('/fonts/now.regular.otf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  scrollbar-width: auto;
+  scrollbar-color: var(--lavender-web) var(--pink-lavender);
+  font-family: 'Now', sans-serif;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--lavender-web);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--pink-lavender);
+}
+
+nav{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  color: var(--periwinkle);
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--periwinkle);
+}
+
+input[type="text"], input[type="password"], input[type="email"] {
+  padding: 0.5rem;
+  border: 1px solid var(--periwinkle);
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus {
+  outline: none;
+  border-color: var(--periwinkle-dark);
+}
+
+input[type="text"]::placeholder, input[type="password"]::placeholder, input[type="email"]::placeholder {
+  color: var(--periwinkle-dark);
+  opacity: 0.7;
+}
+
+
+button, input[type="submit"]{
+  background: var(--periwinkle);
+  color: var(--lavender-web);
+  border: none;
+  padding: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* centre les contenus horizontalement */
+}
+
+.form_button, input[type="submit"] {
+  border-radius: 0.7rem;
+}
+
+button:hover, input[type="submit"]:hover{
+  background: var(--pink-lavender);
+  color: var(--periwinkle-dark);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.svgBackground{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: auto;
+}
+
+@keyframes circleAnimationOdd {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(90deg);
+  }
+  51% {
+    transform: rotate(240deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes circleAnimationEven {
+  0% {
+    transform: rotate(240deg);
+  }
+  50% {
+    transform: rotate(360deg);
+  }
+  99% {
+    transform: rotate(450deg);
+  }
+  100% {
+    transform: rotate(540deg);
+  }
+}
+
+
+/*Glassmorphism basic fond */
+.App{
+  position: relative;
+  padding: 4%;
+  margin-top:3%;
+  margin-left: auto;
+  margin-right: auto;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border: 1px solid var(--color-white);
+  box-shadow: 0 4px 30px var(--lavender-web);
+  z-index: 2;
+  max-width: 90vw;
+  height: 80vh;
+}
+
+#menu-principal{
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  z-index: 3;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 10px 10px 0 0;
+  border: 1px solid var(--color-white);
+}
+
+#mini-menu{
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  padding: 3%;
+  z-index: 3;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 10px 10px 0 0;
+  border: 1px solid var(--color-white);
+}
+
+#mini-menu nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.menu-link {
+  padding: 8px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.active-link {
+  background-color: var(--pink-lavender);
+}
+
+/*Glassmorphism fond element */
+.element{
+  position: relative;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border: 1px solid var(--color-white);
+}
+
+.element > div{
+  padding: 2% 5%;
+}
+
+.text-xl{
+  font-size: 1.5rem;
+  margin-bottom: 2%;
+  width: 100%;
+  padding: 2%;
+  border-radius: 10px;
+  color: var(--periwinkle);
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--color-white);
+}
+
+hr{
+  border: 1px solid var(--periwinkle);
+  margin: 0;
+}
+
+.patient_page{
+  display: flex;
+  flex-direction: column;
+  gap: 5vh
+}
+
+.patient-name h2{
+  font-size: 2rem;
+  color: var(--periwinkle);
+  margin-left: 1%;
+}
+
+.menuPatient{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2%;
+}
+
+.menuPatient a {
+  padding: 1%;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--color-white);
+  color: var(--periwinkle);
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.menuPatient a:hover {
+  background: rgba(255, 255, 255, 0.93);
+  transition: background 0.3s ease;
+}
+
+.titre_liste_patient{
+  font-size: 1.5rem;
+  color: var(--periwinkle);
+}
+
+.patient-details canvas{
+  margin-top: 10vh;
+  height: 50vh;
+}
+
+.info_patient ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-top: 4%;
+  padding-right: 1%;
+  gap: 2vh;
+}
+
+.info_patient ul li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  border: 1px solid var(--color-white);
+  padding: 3%;
+  text-align: center;
+  transition: background 0.3s ease;
+}
+
+.info_patient ul li:hover{
+  background: rgba(255, 255, 255, 0.93);
+  transition: background 0.3s ease;
+}
+
+.msg_input{
+  display: flex;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.msg_input input{
+  flex: 1;
+  padding: 10px;
+  border: 1px solid var(--lavender-web);
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 50%;
+  margin-right: 10px;
+}
+
+.carrousel{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5%;
+}
+
+.carrousel_container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 10px;
+}
+
+.carrousel_item {
+  flex: 0 0 auto;
+  width: 200px;
+  height: 250px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  border: 1px solid var(--color-white);
+  scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: background 0.3s ease;
+}
+
+.patient-search{
+  padding: 2%;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  border: 1px solid var(--color-white);
+}
+
+.carrousel_item:hover {
+  background: rgba(255, 255, 255, 0.7);
+  border: var(--periwinkle);
+  transition: background 0.3s ease;
+}
+
+.button_left_carrou, .button_right_carrou{
+  background: rgba( 255, 255, 255, 0.0);
+  color: var(--periwinkle);
+  border: none;
+  border-radius: 5px;
+  padding: 5%;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.patient-search form{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 2%;
+}
+
+.patient-search form input[type="text"]{
+  flex: 1;
+  font-size: 1rem;
+  min-width: 50%;
+}
+
+.patient-search form button, .patient-search form input[type="submit"]{
+  margin-left: 2%;
+}
+
+.scheduler{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2%;
+}
+
+.scheduler > button{
+  min-width: 30%;
+}
+
+
+ /*orientation landscape*/
+@media (orientation: landscape) {
+  #menu-principal, #mini-menu{
+    top: 0;
+    height: 10vh;
+    bottom: auto;
+    border-radius: 0 0 10px 10px;
+  }
+
+  #menu-principal nav, #mini-menu nav {
+    margin-top: 5%;
+  }
+
+  .App{
+    margin-top: 12vh;
+    padding: 3%;
+  }
+  .carrousel_container{
+    overflow-x: hidden;
+  }
+
+  .patient-search form input[type="text"]{
+    margin-left: 2%;
+  }
+
+  .info_patient ul {
+    padding-top: 1%;
+  }
+}
+
